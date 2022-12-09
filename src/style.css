@@ -1,0 +1,14 @@
+:root {
+  --font-color: #e7e7eb;
+  --font-gray: #88869d;
+  --bg-gray: #6e707a;
+  --bg-main: #100e1d;
+  --bg-card-sidebar: #1e213a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+}
