@@ -24,7 +24,7 @@
   }
 
   const getWeather = () => {
-      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city.value}&units=metric&appid=${apikey}`)
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city.value}&units=metric&appid=${apikey}`)
           .then(res => {
               return res.json()
           })
@@ -32,7 +32,7 @@
   }
 
   const currentWeather = () => {
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city.value}&units=metric&appid=${apikey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city.value}&units=metric&appid=${apikey}`)
             .then(res => {
                 return res.json()
             })
