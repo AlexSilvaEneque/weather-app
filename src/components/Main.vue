@@ -58,10 +58,13 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;    
-    height: max-content;
+    align-items: center;
+    min-height: max-content;  
+    /* height: 90; */
     padding-bottom: 5rem;
     padding-top: 2rem;
+
+    border: solid;
 }
 
 .wrapper__main {
