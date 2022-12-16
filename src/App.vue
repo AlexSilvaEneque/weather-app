@@ -75,6 +75,7 @@
     grid-template-areas: "a b";
     color: var(--font-color);
     min-height: 100vh;
+    /* height: 100vh; */
     background-color: var(--bg-main);
   }
 
