@@ -63,8 +63,6 @@
     /* height: 90; */
     padding-bottom: 5rem;
     padding-top: 2rem;
-
-    border: solid;
 }
 
 .wrapper__main {
