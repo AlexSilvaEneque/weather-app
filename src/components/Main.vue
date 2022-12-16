@@ -58,7 +58,10 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;    
+    height: max-content;
+    padding-bottom: 5rem;
+    padding-top: 2rem;
 }
 
 .wrapper__main {

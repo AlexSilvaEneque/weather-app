@@ -41,7 +41,7 @@
 <style scoped>
 .sidebar {
     display: grid;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     background-color: var(--bg-card-sidebar);
     color: var(--font-color);
