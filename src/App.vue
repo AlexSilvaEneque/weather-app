@@ -10,6 +10,10 @@
   const list = ref([])
   const flag = ref(false)
 
+  const flag_lo = ref(false)
+  const lon = ref('')
+  const lat = ref('')
+
   const city = ref('')
 
   city.value = 'Lima'
@@ -23,20 +27,52 @@
       list.value = results
   }
 
+  const location = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        lon.value = position.coords.longitude
+        lat.value = position.coords.latitude
+        
+        flag_lo.value = true
+      }, () => {
+        flag_lo.value = false
+      })
+    }
+  }
+
   const getWeather = () => {
+    console.log(flag.value);
+    if (flag_lo.value) {
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat.value}&lon=${lon.value}&units=metric&appid=${apikey}`)
+          .then(res => {
+              return res.json()
+          })
+          .then(llenado)
+    } else {      
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city.value}&units=metric&appid=${apikey}`)
           .then(res => {
               return res.json()
           })
           .then(llenado)
+    }
+
+
   }
 
   const currentWeather = () => {
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city.value}&units=metric&appid=${apikey}`)
+    if (flag_lo.value) {
+      fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat.value}&lon=${lon.value}&units=metric&appid=${apikey}`)
             .then(res => {
                 return res.json()
             })
             .then(aux)
+    } else {
+      fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city.value}&units=metric&appid=${apikey}`)
+              .then(res => {
+                  return res.json()
+              })
+              .then(aux)
+    }
   }
 
   const byCity = (dato) => {
@@ -48,12 +84,21 @@
     currentWeather()
   })
 
+  watch(flag_lo, () => {
+    if(flag_lo.value) {
+      getWeather()
+      currentWeather()
+    }
+  })
+
+
   onMounted(() => {
-    currentWeather()
-    getWeather()
-    setTimeout(() => {
-      flag.value = true
-    }, 3000);
+      location()
+      currentWeather()
+      getWeather()
+      setTimeout(() => {
+        flag.value = true
+      }, 3000);
   })
 
 </script>
