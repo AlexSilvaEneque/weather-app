@@ -27,7 +27,6 @@ export const convertKm = ( param  ) => {
     let arr = String(param).split('').map((num) => {
         return Number(num)
     })
-
     return arr.length > 4 ? `${arr[0]}${arr[1]}.${arr[2]}` : `${arr[0]}.${arr[1]}`
 
 }
